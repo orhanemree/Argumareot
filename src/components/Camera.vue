@@ -1,0 +1,75 @@
+<template>
+    <div>
+        <div id="camera" class="relative">
+            <button class="absolute bottom-[-1.5rem] left-0 right-0 z-[1] m-auto bg-black rounded-[50%] w-12 h-12 border-2 border-black" @click="capture()">
+                <img src="../assets/camera_FILL0_wght400_GRAD0_opsz48.svg" alt="camera">
+            </button>
+            <div class="z-[1] absolute top-3 left-3 right-0">
+                <span class="text-lg font-bold bg-slate-200 px-2">{{label}}</span>
+                <!-- <span>{{confidence}}</span> -->
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    name: "Camera",
+    data(){
+        return{
+            label: "",
+            confidence: ""
+        }
+    },
+    methods: {
+        capture(){
+            const dataUrlImage = document.querySelector(".p5Canvas").toDataURL('image/jpeg');
+            console.log(dataUrlImage);
+        }
+    },
+    mounted(){
+        let classifier, videoInput, outputWidth, outputHeight;
+        const classifyVideo = () => {
+            classifier.classify(videoInput, (err, result) => {
+                if (err) throw err;
+                if (result[0].confidence * 100 > 95){    
+                    this.label = result[0].label;
+                    this.confidence = `%${Math.round(result[0].confidence * 100)}`;
+                } else {
+                    this.label = "";
+                    this.confidence = "";
+                }
+                classifyVideo();
+            });
+        }
+        const script = p => {
+            p.preload = _ => {
+                const modelUrl = "https://teachablemachine.withgoogle.com/models/7Jmpuujsv/model.json";
+                classifier = ml5.imageClassifier(modelUrl);
+            }
+            p.setup = _ => {
+                outputWidth = window.innerWidth / 2;
+                outputHeight = outputWidth * 0.75;
+
+                if (window.matchMedia("(max-width: 768px)").matches) {
+                    outputWidth = window.innerWidth *  .9;
+                    outputHeight = outputWidth * 0.75;
+                }
+
+                const canvas = p.createCanvas(outputWidth, outputHeight);
+                canvas.parent("camera");
+
+                videoInput = p.createCapture(p.VIDEO);
+                videoInput.size(outputWidth, outputHeight);
+                videoInput.hide();
+
+                classifyVideo();
+            }
+            p.draw = _ => {
+                p.image(videoInput, 0, 0, outputWidth, outputHeight);
+            }
+        }
+        new p5(script);
+    }
+}
+</script>

@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.p5Canvas{
+    @apply
+    -scale-x-100
+    border-[5px]
+    border-black
+    rounded-lg
+}
+
+body{
+    @apply
+    w-screen
+    h-screen
+    flex
+    items-center
+    md:justify-center
+    justify-end
+    flex-col-reverse
+    bg-slate-200
+    gap-8
+}
