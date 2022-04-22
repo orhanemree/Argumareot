@@ -1,0 +1,27 @@
+[
+    {
+        "name": "idle",
+        "id": 0,
+        "info": "IDLE Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, error? Illo pariatur culpa inventore at dolorem eveniet magnam minima iure quos, fugit natus! Voluptatum nostrum obcaecati, ducimus provident harum aliquid corrupti ab commodi non. A nihil tempora autem deleniti minima expedita! Esse laboriosam enim eos explicabo itaque, maxime aperiam commodi?"
+    },
+    {
+        "name": "e",
+        "id": 1,
+        "info": "E Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, error? Illo pariatur culpa inventore at dolorem eveniet magnam minima iure quos, fugit natus! Voluptatum nostrum obcaecati, ducimus provident harum aliquid corrupti ab commodi non. A nihil tempora autem deleniti minima expedita! Esse laboriosam enim eos explicabo itaque, maxime aperiam commodi?"
+    },
+    {
+        "name": "tokmak",
+        "id": 3,
+        "info": "TOKMAK Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, error? Illo pariatur culpa inventore at dolorem eveniet magnam minima iure quos, fugit natus! Voluptatum nostrum obcaecati, ducimus provident harum aliquid corrupti ab commodi non. A nihil tempora autem deleniti minima expedita! Esse laboriosam enim eos explicabo itaque, maxime aperiam commodi?"
+    },
+    {
+        "name": "piramit",
+        "id": 4,
+        "info": "PİRAMİT Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, error? Illo pariatur culpa inventore at dolorem eveniet magnam minima iure quos, fugit natus! Voluptatum nostrum obcaecati, ducimus provident harum aliquid corrupti ab commodi non. A nihil tempora autem deleniti minima expedita! Esse laboriosam enim eos explicabo itaque, maxime aperiam commodi?"
+    },
+    {
+        "name": "carpi",
+        "id": 5,
+        "info": "ÇARPI Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, error? Illo pariatur culpa inventore at dolorem eveniet magnam minima iure quos, fugit natus! Voluptatum nostrum obcaecati, ducimus provident harum aliquid corrupti ab commodi non. A nihil tempora autem deleniti minima expedita! Esse laboriosam enim eos explicabo itaque, maxime aperiam commodi?"
+    }
+]
