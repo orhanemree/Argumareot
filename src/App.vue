@@ -6,8 +6,7 @@
     <div v-show="menu" class="absolute inset-0 z-[1] w-screen h-screen bg-slate-200 flex flex-col">
         <button class="menu-item" @click="scan()">Motif Tara</button>
         <button class="menu-item" @click="toggleTeam()">Teknofest Takımı</button>
-        <!-- TODO: GitHub linkini düzelt -->
-        <a class="menu-item" href="https://github.com">GitHub</a>
+        <a class="menu-item" href="https://github.com/orhanemree/argumareot">GitHub</a>
     </div>
     <div v-show="team" class="absolute inset-0 z-[1] w-screen h-screen bg-slate-200 flex flex-col">
         <!-- TODO: Takım bilgilerini yaz -->
