@@ -21,4 +21,18 @@ body{
     flex-col-reverse
     bg-slate-200
     gap-8
+    overflow-hidden
+}
+
+.menu-item{
+    @apply
+    h-[100%]
+    bg-slate-400
+    hover:bg-slate-300
+    transition
+    border-2
+    border-black
+    flex
+    items-center
+    justify-center
 }
