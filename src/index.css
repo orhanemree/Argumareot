@@ -19,7 +19,7 @@ body{
     md:justify-center
     justify-end
     flex-col-reverse
-    bg-slate-100
+    bg-[#f6f8fa]
     gap-8
     overflow-hidden
 }
