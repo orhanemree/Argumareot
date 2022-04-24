@@ -6,12 +6,17 @@
             </button>
             <div class="z-[1] absolute top-3 left-3">
                 <span v-show="motif.name" class="text-lg font-bold bg-[#f6f8fa] px-2">{{motif.name}}</span>
-                <!-- <span>{{confidence}}</span> -->
             </div>
-            <select @change="changeVideoSource($event)" class="z-[1] absolute top-3 right-3 bg-[#f6f8fa] rounded" name="devices">
-                <option>Kamerayı Değiştir</option>
-                <option v-for="device in devices" :key="device" :value="device.deviceId">{{device.label}}</option>
-            </select>
+            <div class="z-[1] absolute top-3 right-3 flex items-center justify-center gap-3">
+                <select @change="changeVideoSource($event)" class="bg-[#f6f8fa] rounded" name="devices">
+                    <option>Kamerayı Değiştir</option>
+                    <option v-for="device in devices" :key="device" :value="device.deviceId">{{device.label}}</option>
+                </select>
+                <button @click="mirrorVideo()" class="bg-[#f6f8fa] rounded px-2">
+                    <span>Aynala</span>
+                    <img class="h-6 inline" src="../assets/autorenew_FILL0_wght400_GRAD0_opsz48.svg" alt="mirror video">
+                </button>
+            </div>
         </div>
         <div class="md:w-64 w-[80%] mx-auto text-justify text-md">
             {{motif.info}}
@@ -26,28 +31,49 @@ export default {
     data(){
         return{
             motif: {},
-            devices: []
+            devices: [],
+            storage: {}
         }
     },
     methods: {
+        // canvas üzerindeki görüntüyü al
+        // TODO: bu görüntüyü indirilebilir yap
         capture(){
             const dataUrlImage = document.querySelector(".p5Canvas").toDataURL('image/jpeg');
             console.log(dataUrlImage);
         },
+
+        // kullanılabilir video kaynaklarının listele
         listDevices(){
             navigator.mediaDevices.enumerateDevices().then( devices => {
                     this.devices = devices.filter(device => device.kind === "videoinput");
                 }
             );
         },
+
+        // video kaynağını ve localstorage verisini değiştir
         changeVideoSource(e){
-            window.localStorage["videoSourceDevice"] = e.target.value;
+            this.storage.videoSource = {
+                video: {
+                    deviceId: e.target.value
+                }
+            }
+            window.localStorage["argumareot-video"] = JSON.stringify(this.storage);
+            location.reload();
+        },
+
+        // video aynalama değişkenini ve localstorage verisini değiştir
+        mirrorVideo(){
+            this.storage.isMirrored = !this.storage.isMirrored;
+            window.localStorage["argumareot-video"] = JSON.stringify(this.storage);
             location.reload();
         }
     },
     mounted(){
         this.listDevices();
-        let classifier, videoInput, outputWidth, outputHeight, videoSource;
+
+        // ml5 video classifier
+        let classifier, videoInput, outputWidth, outputHeight;
         const classifyVideo = () => {
             classifier.classify(videoInput, (err, result) => {
                 if (err) throw err;
@@ -59,19 +85,19 @@ export default {
                 classifyVideo();
             });
         }
+
+        // p5 script
         const script = p => {
             p.preload = _ => {
                 const modelUrl = "https://teachablemachine.withgoogle.com/models/7Jmpuujsv/model.json";
                 classifier = ml5.imageClassifier(modelUrl);
-                if (window.localStorage["videoSourceDevice"]){
-                    videoSource = {
-                        video: {
-                            deviceId: window.localStorage["videoSourceDevice"]
-                        }
-                    }
-                } else {
-                    videoSource = p.VIDEO;
+
+                // video ayalarını al (video kaynağı ve aynalama)
+                if (!window.localStorage["argumareot-video"]){
+                    window.localStorage["argumareot-video"] = JSON.stringify({ videoSource: p.VIDEO, isMirrored: false });
                 }
+                this.storage = JSON.parse(window.localStorage["argumareot-video"]);
+
             }
             p.setup = _ => {
                 outputWidth = window.innerWidth / 2;
@@ -84,8 +110,11 @@ export default {
 
                 const canvas = p.createCanvas(outputWidth, outputHeight);
                 canvas.parent("camera");
+                if (this.storage.isMirrored) {
+                    canvas.canvas.classList.add("-scale-x-100");
+                }
 
-                videoInput = p.createCapture(videoSource);
+                videoInput = p.createCapture(this.storage.videoSource);
                 videoInput.size(outputWidth, outputHeight);
                 videoInput.hide();
 

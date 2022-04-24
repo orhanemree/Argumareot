@@ -4,7 +4,6 @@
 
 .p5Canvas{
     @apply
-    -scale-x-100
     border-[5px]
     border-black
     rounded-lg
