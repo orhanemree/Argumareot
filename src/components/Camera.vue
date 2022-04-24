@@ -1,9 +1,6 @@
 <template>
     <div class="flex items-center justify-center gap-12 flex-col md:flex-row">
         <div id="camera" class="relative">
-            <button class="absolute bottom-[-1.5rem] left-0 right-0 z-[1] m-auto bg-black rounded-[50%] w-12 h-12 border-2 border-black" @click="capture()">
-                <img src="../assets/camera_FILL0_wght400_GRAD0_opsz48.svg" alt="camera">
-            </button>
             <div class="z-[1] absolute top-3 left-3">
                 <span v-show="motif.name" class="text-lg font-bold bg-[#f6f8fa] px-2">{{motif.name}}</span>
             </div>
@@ -36,13 +33,6 @@ export default {
         }
     },
     methods: {
-        // canvas üzerindeki görüntüyü al
-        // TODO: bu görüntüyü indirilebilir yap
-        capture(){
-            const dataUrlImage = document.querySelector(".p5Canvas").toDataURL('image/jpeg');
-            console.log(dataUrlImage);
-        },
-
         // kullanılabilir video kaynaklarının listele
         listDevices(){
             navigator.mediaDevices.enumerateDevices().then( devices => {
