@@ -36,3 +36,20 @@ body{
     justify-center
     text-lg
 }
+
+.grid-item{
+    @apply
+    grid
+    sm:grid-cols-3
+    grid-cols-1
+    sm:gap-2
+    sm:my-2
+    text-center
+}
+
+.grid-item a {
+    @apply
+    underline
+    transition
+    hover:opacity-80
+}

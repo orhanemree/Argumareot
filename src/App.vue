@@ -11,9 +11,47 @@
             <span>GitHub</span>
         </a>
     </div>
-    <div v-show="team" class="absolute inset-0 z-[1] w-screen h-screen bg-[#f6f8fa] flex flex-col">
-        <!-- TODO: Takım bilgilerini yaz -->
-        Buraya takım ile ilgili bilgilendirmeler gelecek.
+    <div v-show="team" class="absolute inset-0 z-[1] w-screen h-screen bg-[#f6f8fa] flex flex-col p-8">
+        <h1 class="font-bold text-2xl text-center">Teknofest Turizm Teknolojileri Yarışması Argumareot Takımı</h1>
+            <hr class="m-5">
+            <div class="grid sm:grid-cols-1 grid-cols-2 gap-4">
+                <div class="hidden sm:grid-item text-lg font-bold">
+                    <div>Takım Üyesi</div>
+                    <div>Okulu</div>
+                    <div>Takımdaki Görevi</div>
+                </div>
+                <div class="grid-item">
+                    <div><a href="mailto:gokcenazbalci@hotmail.com">Gökçe Naz Balcı</a></div>
+                    <div>Mekteb-i İdadi-i Mülki Afyon Lisesi</div>
+                    <div>Takım Kaptanı</div>
+                </div>
+                <div class="grid-item">
+                    <div>Berra Ulukaya</div>
+                    <div>Kamil Miras Anadolu Lisesi</div>
+                    <div>Veri Toplama</div>
+                </div>
+                <div class="grid-item">
+                    <div>Rümeysa Esma Karanfil</div>
+                    <div>Afyon Süleyman Demirel Fen Lisesi</div>
+                    <div>Veri Toplama</div>
+                </div>
+                <div class="grid-item">
+                    <div><a href="https://www.instagram.com/arda.canm/">Arda Can</a></div>
+                    <div>Mekteb-i İdadi-i Mülki Afyon Lisesi</div>
+                    <div>Araştırma</div>
+                </div>
+                  <div class="grid-item">
+                    <div>Kemal Aktoy</div>
+                    <div>Kamil Miras Anadolu Lisesi</div>
+                    <div>Araştırma</div>
+                </div>
+                <div class="grid-item">
+                    <div><a href="https://github.com/orhanemree">Orhan Emre Dikicigil</a></div>
+                    <div>TED Afyon Koleji</div>
+                    <div>Web Geliştirme</div>
+                </div>
+            </div>
+        <div class="absolute bottom-3 left-0 text-center w-full font-bold">MIT Lisansı &copy;</div>
     </div>
 </template>
 
