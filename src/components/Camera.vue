@@ -59,62 +59,62 @@ export default {
             location.reload();
         }
     },
-    // mounted(){
-    //     this.listDevices();
+    mounted(){
+        this.listDevices();
 
-    //     ml5 video classifier
-    //     let classifier, videoInput, outputWidth, outputHeight;
-    //     const classifyVideo = () => {
-    //         classifier.classify(videoInput, (err, result) => {
-    //             if (err) throw err;
-    //             if (result[0].confidence * 100 > 95){
-    //                 this.motif = data.filter(m => m.name === result[0].label)[0];
-    //             } else {
-    //                 this.motif = {}
-    //             }
-    //             classifyVideo();
-    //         });
-    //     }
+        // ml5 video classifier
+        let classifier, videoInput, outputWidth, outputHeight;
+        const classifyVideo = () => {
+            classifier.classify(videoInput, (err, result) => {
+                if (err) throw err;
+                if (result[0].confidence * 100 > 95){
+                    this.motif = data.filter(m => m.name === result[0].label)[0];
+                } else {
+                    this.motif = {}
+                }
+                classifyVideo();
+            });
+        }
 
-    //     p5 script
-    //     const script = p => {
-    //         p.preload = _ => {
-    //             const modelUrl = "https://teachablemachine.withgoogle.com/models/7Jmpuujsv/model.json";
-    //             classifier = ml5.imageClassifier(modelUrl);
+        // p5 script
+        const script = p => {
+            p.preload = _ => {
+                const modelUrl = "https://teachablemachine.withgoogle.com/models/7Jmpuujsv/model.json";
+                classifier = ml5.imageClassifier(modelUrl);
 
-    //             video ayalarını al (video kaynağı ve aynalama)
-    //             if (!window.localStorage["argumareot-video"]){
-    //                 window.localStorage["argumareot-video"] = JSON.stringify({ videoSource: p.VIDEO, isMirrored: false });
-    //             }
-    //             this.storage = JSON.parse(window.localStorage["argumareot-video"]);
+                // video ayalarını al (video kaynağı ve aynalama)
+                if (!window.localStorage["argumareot-video"]){
+                    window.localStorage["argumareot-video"] = JSON.stringify({ videoSource: p.VIDEO, isMirrored: false });
+                }
+                this.storage = JSON.parse(window.localStorage["argumareot-video"]);
 
-    //         }
-    //         p.setup = _ => {
-    //             outputWidth = window.innerWidth / 2;
-    //             outputHeight = outputWidth * 0.75;
+            }
+            p.setup = _ => {
+                outputWidth = window.innerWidth / 2;
+                outputHeight = outputWidth * 0.75;
 
-    //             if (window.matchMedia("(max-width: 768px)").matches) {
-    //                 outputWidth = window.innerWidth *  .9;
-    //                 outputHeight = outputWidth * 0.75;
-    //             }
+                if (window.matchMedia("(max-width: 768px)").matches) {
+                    outputWidth = window.innerWidth *  .9;
+                    outputHeight = outputWidth * 0.75;
+                }
 
-    //             const canvas = p.createCanvas(outputWidth, outputHeight);
-    //             canvas.parent("camera");
-    //             if (this.storage.isMirrored) {
-    //                 canvas.canvas.classList.add("-scale-x-100");
-    //             }
+                const canvas = p.createCanvas(outputWidth, outputHeight);
+                canvas.parent("camera");
+                if (this.storage.isMirrored) {
+                    canvas.canvas.classList.add("-scale-x-100");
+                }
 
-    //             videoInput = p.createCapture(this.storage.videoSource);
-    //             videoInput.size(outputWidth, outputHeight);
-    //             videoInput.hide();
+                videoInput = p.createCapture(this.storage.videoSource);
+                videoInput.size(outputWidth, outputHeight);
+                videoInput.hide();
 
-    //             classifyVideo();
-    //         }
-    //         p.draw = _ => {
-    //             p.image(videoInput, 0, 0, outputWidth, outputHeight);
-    //         }
-    //     }
-    //     new p5(script);
-    // }
+                classifyVideo();
+            }
+            p.draw = _ => {
+                p.image(videoInput, 0, 0, outputWidth, outputHeight);
+            }
+        }
+        new p5(script);
+    }
 }
 </script>
