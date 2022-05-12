@@ -7,6 +7,12 @@ TEKNOFEST Turizm Teknolojileri Yarışması Argumareot Takımı website kaynak k
 * Tailwind CSS
 * JavaScript/Vue.js (Vite.js)
 
+## 🧐 Basitçe:
+* Daha önceden fotoğraflanmış motiflerden [Teachable Machine](https://teachablemachine.withgoogle.com/) ile veri seti oluşturulur.
+* ml5.js kütüphanesi ile kullanıcı kamerasından alınan görseller bu veri seti ile karşılaştırılır.
+* p5.js kütüphanesi ile eşleşen motife ait bilgi kullanıcıya gösterilir.
+* PWA desteği bulunmaktadır.
+
 ## 🕹️ Geliştiriciler İçin
 ```bash
 # repoyu klonlayın
