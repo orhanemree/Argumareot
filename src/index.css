@@ -20,7 +20,8 @@ body{
     flex-col-reverse
     bg-[#f6f8fa]
     gap-8
-    overflow-hidden
+    overflow-x-hidden
+    overflow-y-scroll
 }
 
 .menu-item{
