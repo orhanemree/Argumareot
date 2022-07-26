@@ -3,29 +3,24 @@ TEKNOFEST Turizm Teknolojileri Yarışması Argumareot Takımı website kaynak k
 
 [👉 Siteyi ziyaret edin](https://argumareot-turizm.netlify.app)
 
-## 💻 Kullanılan Teknolojiler
-* Tailwind CSS
-* JavaScript/Vue.js (Vite.js)
+## Kullanılan Teknolojiler
+* Frontend: Tailwind CSS + Vue.js
 
-## 🧐 Basitçe:
+## Basitçe:
 * Daha önceden fotoğraflanmış motiflerden [Teachable Machine](https://teachablemachine.withgoogle.com/) ile veri seti oluşturulur.
 * ml5.js kütüphanesi ile kullanıcı kamerasından alınan görseller bu veri seti ile karşılaştırılır.
 * p5.js kütüphanesi ile eşleşen motife ait bilgi kullanıcıya gösterilir.
 * PWA desteği bulunmaktadır.
 
-## 🕹️ Geliştiriciler İçin
-```bash
-# repoyu klonlayın
+## Geliştirici Ortamı
+```terminal
 $ git clone https://github.com/orhanemree/Argumareot.git
-# gereklilikleri kurun
-$ npm install
-# development
-$ npm run dev
-# production
-$ npm start
+$ cd Argumareot
+$ npm i
+$ npm run dev # listening post 3000
 ```
 
-## 🤝 Takım Hakkında
+## Teknofest Takımı
 |Takım Üyesi|Takımdaki Görevi|
 |--|--|
 |[Gökçe Naz Balcı](mailto:gokcenazbalci@hotmail.com)|Takım Kaptanı|
@@ -33,7 +28,6 @@ $ npm start
 |Berra Ulukaya|Veri Toplama|
 |Rümeysa Esma Karanfil|Veri Toplama|
 |[Arda Can](https://www.instagram.com/arda.canm/)|Araştırma|
-|Kemal Aktoy|Araştırma|
 
-## 📃 Lisans
+## Lisans
 * [MIT Lisansı](./LICENSE) ile lisanslanmıştır.

@@ -40,11 +40,6 @@
                     <div>Mekteb-i İdadi-i Mülki Afyon Lisesi</div>
                     <div>Araştırma</div>
                 </div>
-                  <div class="grid-item">
-                    <div>Kemal Aktoy</div>
-                    <div>Kamil Miras Anadolu Lisesi</div>
-                    <div>Araştırma</div>
-                </div>
                 <div class="grid-item">
                     <div><a href="https://github.com/orhanemree">Orhan Emre Dikicigil</a></div>
                     <div>TED Afyon Koleji</div>
